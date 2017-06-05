@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+body{
+
+
+	background-image:url("https://s-media-cache-ak0.pinimg.com/originals/2d/a1/b0/2da1b082cb5ce8f9fb1dc92fb4d95b38.jpg");
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 550px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 15%;
+    border-radius: 50%;
+}
+
+
+.container {
+    padding: 16px;
+    width:550px;
+      margin-left: 390px;
+}
+
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+		</style>
+</head>
+		<script>
+		$(document).ready(function() {
+	$('.btn-primary').on('click',function(){
+		$.ajax({
+			url:'/login',
+			type:'POST',
+			data:{
+				username:$('#username').val(),
+				
+				password:$('#password').val()
+
+			},
+			success:function(json){
+				console.log(json);
+			$('#mesazhi').html(json.message);
+				if(json.message=="u gjet"){
+				
+				window.location.href= "http://localhost:7000/profile";
+				}
+		
+			}
+
+
+		});
+
+	});
+
+
+	});
+
+
+
+
+
+
+</script>
+
+	</head>
+	<body>
+	
+  <div class="imgcontainer">
+    <img src="https://www.introducertoday.co.uk/profiles/094437.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" id="username">
+
+    <label><b>Password</b></label>
+    <input type="text" placeholder="Enter Password" id="password" >
+
+    <button class="btn btn-primary">Login</button>
+    <input type="checkbox" checked="checked"> Remember me<p id="mesazhi"></p>
+  </div>
+
+  
+   
+    
+  
+
+	</body>
+	</html>
